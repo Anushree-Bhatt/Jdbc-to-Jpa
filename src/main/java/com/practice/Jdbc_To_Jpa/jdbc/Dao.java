@@ -6,6 +6,8 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public class Dao {
     @Autowired
@@ -14,4 +16,10 @@ public class Dao {
     public Person findById(Integer id){
         return jdbcTemplate.queryForObject("select * from Person where id = ?", new Object[]{id}, new BeanPropertyRowMapper<>(Person.class));
     }
+
+    public List<Person> findAll() {
+        return jdbcTemplate.query("select * from Person", new BeanPropertyRowMapper<>(Person.class));
+    }
+
+
 }

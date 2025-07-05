@@ -39,7 +39,7 @@ public class Person {
 
     @Override
     public String toString() {
-        return "Person{" +
+        return "\nPerson{" +
                 "Id=" + Id +
                 ", name='" + name + '\'' +
                 ", location='" + location + '\'' +

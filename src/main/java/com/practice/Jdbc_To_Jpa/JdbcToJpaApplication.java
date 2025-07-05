@@ -22,5 +22,6 @@ public class JdbcToJpaApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		logger.info("Person with id = 1000: {}", dao.findById(1000));
+		logger.info("All the person details: {}", dao.findAll());
 	}
 }

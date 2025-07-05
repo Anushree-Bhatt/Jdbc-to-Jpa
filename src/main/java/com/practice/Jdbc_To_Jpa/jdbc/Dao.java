@@ -6,6 +6,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import java.util.HashSet;
 import java.util.List;
 
 @Repository
@@ -19,6 +20,10 @@ public class Dao {
 
     public List<Person> findAll() {
         return jdbcTemplate.query("select * from Person", new BeanPropertyRowMapper<>(Person.class));
+    }
+
+    public int deleteById(int id1, int id2) {
+        return jdbcTemplate.update("delete from Person where id in (?, ?)", new Object[]{id1, id2});
     }
 
 

@@ -22,6 +22,8 @@ public class Dao {
         return jdbcTemplate.query("select * from Person", new BeanPropertyRowMapper<>(Person.class));
     }
 
+
+
     public int deleteById(int id1, int id2) {
         return jdbcTemplate.update("delete from Person where id in (?, ?)", new Object[]{id1, id2});
     }

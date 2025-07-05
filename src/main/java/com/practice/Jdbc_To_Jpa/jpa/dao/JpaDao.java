@@ -16,4 +16,12 @@ public class JpaDao {
     public Person findById(Integer id){
         return entityManager.find(Person.class, id);
     }
+
+    public Person save(Person person){
+        return entityManager.merge(person);
+    }
+
+    public Person update(Person person){
+        return entityManager.merge(person);
+    }
 }

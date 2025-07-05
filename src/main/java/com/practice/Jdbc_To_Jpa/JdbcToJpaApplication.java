@@ -11,8 +11,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.time.LocalDate;
-import java.util.Arrays;
-import java.util.HashSet;
+
 
 @SpringBootApplication
 public class JdbcToJpaApplication implements CommandLineRunner {
@@ -35,6 +34,9 @@ public class JdbcToJpaApplication implements CommandLineRunner {
 
 	private void jpa(){
 		logger.info("Person with id = 1000: {}", jpaDao.findById(1000));
+		logger.info("Inserting new Person: {}", jpaDao.save( new com.practice.Jdbc_To_Jpa.jpa.entity.Person("Sara", "New Jersey, USA", LocalDate.now())));
+		logger.info("Updated Person: {}", jpaDao.save( new com.practice.Jdbc_To_Jpa.jpa.entity.Person(1000, "John updated", "San Fransisco, USA-updated", LocalDate.now())));
+
 	}
 
 	private void jdbc(){

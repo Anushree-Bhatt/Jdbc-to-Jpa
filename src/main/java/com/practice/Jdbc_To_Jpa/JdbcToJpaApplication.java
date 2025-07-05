@@ -2,6 +2,7 @@ package com.practice.Jdbc_To_Jpa;
 
 import com.practice.Jdbc_To_Jpa.jdbc.Dao;
 import com.practice.Jdbc_To_Jpa.jdbc.entity.Person;
+import com.practice.Jdbc_To_Jpa.jpa.dao.JpaDao;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,8 @@ public class JdbcToJpaApplication implements CommandLineRunner {
 
 	@Autowired
 	private Dao dao;
+	@Autowired
+	private JpaDao jpaDao;
 
 	public static void main(String[] args) {
 		SpringApplication.run(JdbcToJpaApplication.class, args);
@@ -26,6 +29,15 @@ public class JdbcToJpaApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
+//		jdbc();
+		jpa();
+	}
+
+	private void jpa(){
+		logger.info("Person with id = 1000: {}", jpaDao.findById(1000));
+	}
+
+	private void jdbc(){
 		logger.info("Person with id = 1000: {}", dao.findById(1000));
 		logger.info("All the person details: {}", dao.findAll());
 

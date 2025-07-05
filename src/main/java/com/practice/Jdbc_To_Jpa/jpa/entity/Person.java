@@ -1,13 +1,11 @@
 package com.practice.Jdbc_To_Jpa.jpa.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.time.LocalDate;
 
 @Entity
+@NamedQuery(name = "find_all_persons", query = "select p from Person p")
 public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,6 +1,5 @@
 package com.practice.Jdbc_To_Jpa.jdbc.entity;
 
-import java.sql.Time;
 import java.time.LocalDate;
 
 public class Person {

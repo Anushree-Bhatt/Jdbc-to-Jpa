@@ -36,7 +36,9 @@ public class JdbcToJpaApplication implements CommandLineRunner {
 		logger.info("Person with id = 1000: {}", jpaDao.findById(1000));
 		logger.info("Inserting new Person: {}", jpaDao.save( new com.practice.Jdbc_To_Jpa.jpa.entity.Person("Sara", "New Jersey, USA", LocalDate.now())));
 		logger.info("Updated Person: {}", jpaDao.save( new com.practice.Jdbc_To_Jpa.jpa.entity.Person(1000, "John updated", "San Fransisco, USA-updated", LocalDate.now())));
-
+		jpaDao.deleteById(1001);
+		logger.info("Deleted person with id = 1001");
+		logger.info("All persons: {}", jpaDao.findAll());
 	}
 
 	private void jdbc(){

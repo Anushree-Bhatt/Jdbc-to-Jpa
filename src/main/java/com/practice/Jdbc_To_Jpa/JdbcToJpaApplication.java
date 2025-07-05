@@ -28,8 +28,11 @@ public class JdbcToJpaApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		logger.info("Person with id = 1000: {}", dao.findById(1000));
 		logger.info("All the person details: {}", dao.findAll());
+
+		dao.save(new Person(1003, "Sara", "New Jersey, USA", LocalDate.now()));
+		logger.info("Inserted new person. Details: {}", dao.findById(1003));
 		logger.info("Updated the person details. No of rows affected: {}", dao.update(new Person(1000, "John updated", "San Fransisco, USA-updated", LocalDate.now())));
-//		logger.info("Delete persons whose id = 1000 or 1001. no of rows affected = {}",
-//				dao.deleteById(1000, 1001));
+		logger.info("Delete persons whose id = 1000 or 1001. no of rows affected = {}",
+				dao.deleteById(1000, 1001));
 	}
 }

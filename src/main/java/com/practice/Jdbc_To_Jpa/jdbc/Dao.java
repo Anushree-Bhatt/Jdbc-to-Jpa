@@ -22,6 +22,11 @@ public class Dao {
         return jdbcTemplate.query("select * from Person", new BeanPropertyRowMapper<>(Person.class));
     }
 
+    public int save(Person person){
+        return jdbcTemplate.update("insert into Person(id, name, location, birth_date) values(?, ?, ?, ?)",
+                                    new Object[]{person.getId(), person.getName(), person.getLocation(), person.getBirth_date()});
+    }
+
     public int update(Person person){
         return jdbcTemplate.update(
                     "update Person " +

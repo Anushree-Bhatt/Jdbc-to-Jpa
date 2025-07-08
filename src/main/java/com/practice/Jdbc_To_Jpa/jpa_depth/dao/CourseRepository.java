@@ -3,9 +3,11 @@ package com.practice.Jdbc_To_Jpa.jpa_depth.dao;
 import com.practice.Jdbc_To_Jpa.jpa_depth.entity.Course;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
 @Repository
+@Transactional
 public class CourseRepository {
     @PersistenceContext
     private EntityManager em;

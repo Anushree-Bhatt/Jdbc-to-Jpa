@@ -9,7 +9,7 @@ public class Course {
     private Long id;
     private String name;
 
-    protected Course() {
+    public Course() {
 
     }
 

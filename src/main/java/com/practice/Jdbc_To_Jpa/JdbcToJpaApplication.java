@@ -41,6 +41,9 @@ public class JdbcToJpaApplication implements CommandLineRunner {
 	private void complete_jpa() {
 		Course course = courseRepo.findById(1000L);
 		logger.info("Course with id - 1000L : {} ", course);
+
+		courseRepo.deleteById(1002L);
+		logger.info("Course with id - 1002L deleted. ");
 	}
 
 	private void jpa(){

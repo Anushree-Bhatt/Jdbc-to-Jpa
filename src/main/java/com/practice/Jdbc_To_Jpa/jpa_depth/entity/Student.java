@@ -3,6 +3,7 @@ package com.practice.Jdbc_To_Jpa.jpa_depth.entity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Student {
@@ -10,6 +11,8 @@ public class Student {
     @GeneratedValue
     private Long id;
     private String name;
+    @OneToOne
+    private Passport passport;
 
     public Student() {
 
@@ -36,11 +39,20 @@ public class Student {
         this.name = name;
     }
 
+    public Passport getPassport() {
+        return passport;
+    }
+
+    public void setPassport(Passport passport) {
+        this.passport = passport;
+    }
+
     @Override
     public String toString() {
         return "Student{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", passport=" + passport.getNumber() +
                 '}';
     }
 }

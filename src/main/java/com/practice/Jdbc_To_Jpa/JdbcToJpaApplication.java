@@ -3,7 +3,9 @@ package com.practice.Jdbc_To_Jpa;
 import com.practice.Jdbc_To_Jpa.jdbc.Dao;
 import com.practice.Jdbc_To_Jpa.jdbc.entity.Person;
 import com.practice.Jdbc_To_Jpa.jpa_depth.dao.CourseRepository;
+import com.practice.Jdbc_To_Jpa.jpa_depth.dao.StudentRepository;
 import com.practice.Jdbc_To_Jpa.jpa_depth.entity.Course;
+import com.practice.Jdbc_To_Jpa.jpa_depth.entity.Student;
 import com.practice.Jdbc_To_Jpa.jpa_intro.dao.JpaDao;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,6 +27,8 @@ public class JdbcToJpaApplication implements CommandLineRunner {
 	private JpaDao jpaDao;
 	@Autowired
 	private CourseRepository courseRepo;
+	@Autowired
+	private StudentRepository studentRepo;
 
 
 	public static void main(String[] args) {
@@ -35,7 +39,12 @@ public class JdbcToJpaApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 //		jdbc();
 //		jpa();
-		complete_jpa();
+//		complete_jpa();
+		mapping_jpa();
+	}
+
+	private void mapping_jpa() {
+		studentRepo.save(new Student("Lisa Roy"));
 	}
 
 	private void complete_jpa() {

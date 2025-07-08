@@ -53,6 +53,8 @@ public class JdbcToJpaApplication implements CommandLineRunner {
 		courseRepo.save(c);
 		logger.info("Course - 'SQL in 25 steps' is updated : {}", courseRepo.findById(1L));
 
+		courseRepo.PlayWithEntityManager();
+
 	}
 
 	private void jpa(){

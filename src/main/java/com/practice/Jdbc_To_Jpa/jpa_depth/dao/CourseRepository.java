@@ -42,5 +42,24 @@ public class CourseRepository {
         }
     }
 
+    public void PlayWithEntityManager() {
+        Course c1 = em.find(Course.class, 1000L);
+
+        Course d1 = new Course("Dummy Course");
+        em.persist(d1);
+
+        em.detach(d1);
+//        em.clear();
+
+        c1.setName("JPA in 50 steps - updated");
+        d1.setName("Dummy Course - updated!"); //detached
+
+        em.flush(); // c1 changes are flushed to db
+        em.detach(c1);
+
+        c1.setName("JPA in 50 steps - updated again!");//detached
+
+    }
+
 
 }

@@ -43,6 +43,7 @@ public class CourseRepository {
     }
 
     public void PlayWithEntityManager() {
+        // --------flush(), clear(), how the changes done to entities are tracked by em--------------
         Course c1 = em.find(Course.class, 1000L);
 
         Course d1 = new Course("Dummy Course");
@@ -57,7 +58,16 @@ public class CourseRepository {
         em.flush(); // c1 changes are flushed to db
         em.detach(c1);
 
-        c1.setName("JPA in 50 steps - updated again!");//detached
+        c1.setName("JPA in 50 steps - updated again!");//detached. So Changes are not tracked by em.
+
+        //------------em.refresh()----------
+        Course c2 = new Course("Angular JS in 100 steps");
+        em.persist(c2);
+        em.flush(); // changes are stored in db
+
+        c2.setName("Angular JS in 100 steps - Updated!");
+
+        em.refresh(c2); //c2 state is refreshed. It's state is just as in db. So em loses track of c2's previous update.
 
     }
 

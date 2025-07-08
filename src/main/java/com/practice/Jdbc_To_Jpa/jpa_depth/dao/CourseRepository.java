@@ -69,6 +69,7 @@ public class CourseRepository {
 
         em.refresh(c2); //c2 state is refreshed. It's state is just as in db. So em loses track of c2's previous update.
 
+
     }
 
 

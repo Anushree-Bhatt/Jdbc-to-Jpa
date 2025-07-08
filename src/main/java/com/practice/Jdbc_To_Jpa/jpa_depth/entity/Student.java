@@ -2,35 +2,22 @@ package com.practice.Jdbc_To_Jpa.jpa_depth.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
-
-import java.time.LocalDateTime;
 
 @Entity
-public class Course {
+public class Student {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private Long id;
     private String name;
-    @CreationTimestamp
-    private LocalDateTime createdAt;
-    @UpdateTimestamp
-    private LocalDateTime updatedAt;
 
-    public Course() {
+    public Student() {
 
     }
 
-    public Course(Long id, String name) {
+    public Student(String name) {
         this.id = id;
         this.name = name;
-    }
-
-    public Course(String s) {
-        this.name = s;
     }
 
     public Long getId() {
@@ -51,7 +38,7 @@ public class Course {
 
     @Override
     public String toString() {
-        return "Course{" +
+        return "Student{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';

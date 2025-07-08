@@ -44,6 +44,15 @@ public class JdbcToJpaApplication implements CommandLineRunner {
 
 		courseRepo.deleteById(1002L);
 		logger.info("Course with id - 1002L deleted. ");
+
+		courseRepo.save(new Course("SQL in 25 steps"));
+		logger.info("New Course 'SQL in 25 steps' saved : {}", courseRepo.findAll());
+
+		Course c = courseRepo.findById(1L);
+		c.setName("SQL in 25 steps - updated");
+		courseRepo.save(c);
+		logger.info("Course - 'SQL in 25 steps' is updated : {}", courseRepo.findById(1L));
+
 	}
 
 	private void jpa(){

@@ -43,4 +43,14 @@ class CourseRepositoryTest {
         assertNotNull(courseRepository.findById(1003L)); //DirtiesContext don't work. Because - entityManager.flush() is done internally, even before @DirtiesContext or @Rollback is applied.
     }
 
+    @Test
+    void TestSave() {
+        //test update
+        Course course = courseRepository.findById(1L);
+        course.setName("SQL in 20 steps - Updated!");
+        courseRepository.save(course);
+
+        assertEquals("SQL in 20 steps - Updated!", courseRepository.findById(1L).getName());
+    }
+
 }

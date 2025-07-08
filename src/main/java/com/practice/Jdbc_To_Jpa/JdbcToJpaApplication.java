@@ -2,7 +2,9 @@ package com.practice.Jdbc_To_Jpa;
 
 import com.practice.Jdbc_To_Jpa.jdbc.Dao;
 import com.practice.Jdbc_To_Jpa.jdbc.entity.Person;
-import com.practice.Jdbc_To_Jpa.jpa.dao.JpaDao;
+import com.practice.Jdbc_To_Jpa.jpa_depth.dao.CourseRepository;
+import com.practice.Jdbc_To_Jpa.jpa_depth.entity.Course;
+import com.practice.Jdbc_To_Jpa.jpa_intro.dao.JpaDao;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,9 @@ public class JdbcToJpaApplication implements CommandLineRunner {
 	private Dao dao;
 	@Autowired
 	private JpaDao jpaDao;
+	@Autowired
+	private CourseRepository courseRepo;
+
 
 	public static void main(String[] args) {
 		SpringApplication.run(JdbcToJpaApplication.class, args);
@@ -29,13 +34,19 @@ public class JdbcToJpaApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 //		jdbc();
-		jpa();
+//		jpa();
+		complete_jpa();
+	}
+
+	private void complete_jpa() {
+		Course course = courseRepo.findById(1000L);
+		logger.info("Course with id - 1000L : {} ", course);
 	}
 
 	private void jpa(){
 		logger.info("Person with id = 1000: {}", jpaDao.findById(1000));
-		logger.info("Inserting new Person: {}", jpaDao.save( new com.practice.Jdbc_To_Jpa.jpa.entity.Person("Sara", "New Jersey, USA", LocalDate.now())));
-		logger.info("Updated Person: {}", jpaDao.save( new com.practice.Jdbc_To_Jpa.jpa.entity.Person(1000, "John updated", "San Fransisco, USA-updated", LocalDate.now())));
+		logger.info("Inserting new Person: {}", jpaDao.save( new com.practice.Jdbc_To_Jpa.jpa_intro.entity.Person("Sara", "New Jersey, USA", LocalDate.now())));
+		logger.info("Updated Person: {}", jpaDao.save( new com.practice.Jdbc_To_Jpa.jpa_intro.entity.Person(1000, "John updated", "San Fransisco, USA-updated", LocalDate.now())));
 		jpaDao.deleteById(1001);
 		logger.info("Deleted person with id = 1001");
 		logger.info("All persons: {}", jpaDao.findAll());

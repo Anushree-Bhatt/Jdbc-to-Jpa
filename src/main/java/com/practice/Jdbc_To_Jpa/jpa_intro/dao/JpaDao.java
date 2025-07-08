@@ -1,6 +1,6 @@
-package com.practice.Jdbc_To_Jpa.jpa.dao;
+package com.practice.Jdbc_To_Jpa.jpa_intro.dao;
 
-import com.practice.Jdbc_To_Jpa.jpa.entity.Person;
+import com.practice.Jdbc_To_Jpa.jpa_intro.entity.Person;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;

@@ -8,7 +8,7 @@ public class Student {
     @GeneratedValue
     private Long id;
     private String name;
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     private Passport passport;
 
     public Student() {

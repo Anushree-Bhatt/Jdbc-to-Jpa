@@ -1,9 +1,6 @@
 package com.practice.Jdbc_To_Jpa.jpa_depth.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 
 @Entity
 public class Student {
@@ -52,7 +49,7 @@ public class Student {
         return "Student{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", passport=" + passport.getNumber() +
+//                ", passport=" + passport+
                 '}';
     }
 }

@@ -45,6 +45,8 @@ public class JdbcToJpaApplication implements CommandLineRunner {
 
 	private void mapping_jpa() {
 		studentRepo.save(new Student("Lisa Roy"));
+
+		studentRepo.findById(1L);
 	}
 
 	private void complete_jpa() {
